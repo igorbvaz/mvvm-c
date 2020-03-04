@@ -8,9 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		775575D517B8EDEC75732E8B /* libPods-mvvm-cTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAE1FE9485BB1F8C1E8D713 /* libPods-mvvm-cTests.a */; };
+		780DC834240F39640035F028 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC833240F39640035F028 /* Coordinator.swift */; };
+		780DC836240F39770035F028 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC835240F39770035F028 /* ViewModel.swift */; };
+		780DC838240F398D0035F028 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC837240F398D0035F028 /* Service.swift */; };
+		780DC83A240F39D30035F028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC839240F39D30035F028 /* ViewController.swift */; };
+		780DC83C240F3A8E0035F028 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC83B240F3A8E0035F028 /* Result.swift */; };
+		780DC83E240F3B400035F028 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC83D240F3B400035F028 /* Endpoints.swift */; };
 		78160B16240F35FC000537A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78160B15240F35FC000537A7 /* AppDelegate.swift */; };
 		78160B18240F35FC000537A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78160B17240F35FC000537A7 /* SceneDelegate.swift */; };
-		78160B1A240F35FC000537A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78160B19240F35FC000537A7 /* ViewController.swift */; };
 		78160B1D240F35FC000537A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78160B1B240F35FC000537A7 /* Main.storyboard */; };
 		78160B20240F35FC000537A7 /* mvvm_c.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78160B1E240F35FC000537A7 /* mvvm_c.xcdatamodeld */; };
 		78160B22240F35FF000537A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78160B21240F35FF000537A7 /* Assets.xcassets */; };
@@ -40,10 +45,15 @@
 
 /* Begin PBXFileReference section */
 		3F5E9520AF36E18E705FE9AA /* Pods-mvvm-c.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mvvm-c.release.xcconfig"; path = "Pods/Target Support Files/Pods-mvvm-c/Pods-mvvm-c.release.xcconfig"; sourceTree = "<group>"; };
+		780DC833240F39640035F028 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		780DC835240F39770035F028 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		780DC837240F398D0035F028 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		780DC839240F39D30035F028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		780DC83B240F3A8E0035F028 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		780DC83D240F3B400035F028 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		78160B12240F35FC000537A7 /* mvvm-c.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mvvm-c.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78160B15240F35FC000537A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78160B17240F35FC000537A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		78160B19240F35FC000537A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		78160B1C240F35FC000537A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78160B1F240F35FC000537A7 /* mvvm_c.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mvvm_c.xcdatamodel; sourceTree = "<group>"; };
 		78160B21240F35FF000537A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,7 +155,6 @@
 		780DC829240F37700035F028 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				78160B19240F35FC000537A7 /* ViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -182,6 +191,8 @@
 		780DC82E240F37A30035F028 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				780DC83B240F3A8E0035F028 /* Result.swift */,
+				780DC83D240F3B400035F028 /* Endpoints.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -189,6 +200,10 @@
 		780DC82F240F37B00035F028 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				780DC837240F398D0035F028 /* Service.swift */,
+				780DC833240F39640035F028 /* Coordinator.swift */,
+				780DC835240F39770035F028 /* ViewModel.swift */,
+				780DC839240F39D30035F028 /* ViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -466,9 +481,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78160B1A240F35FC000537A7 /* ViewController.swift in Sources */,
+				780DC838240F398D0035F028 /* Service.swift in Sources */,
 				78160B16240F35FC000537A7 /* AppDelegate.swift in Sources */,
+				780DC834240F39640035F028 /* Coordinator.swift in Sources */,
 				78160B18240F35FC000537A7 /* SceneDelegate.swift in Sources */,
+				780DC836240F39770035F028 /* ViewModel.swift in Sources */,
+				780DC83A240F39D30035F028 /* ViewController.swift in Sources */,
+				780DC83C240F3A8E0035F028 /* Result.swift in Sources */,
+				780DC83E240F3B400035F028 /* Endpoints.swift in Sources */,
 				78160B20240F35FC000537A7 /* mvvm_c.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

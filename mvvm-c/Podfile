@@ -9,6 +9,7 @@ target 'mvvm-c' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  pod 'Alamofire'
 
   target 'mvvm-cTests' do
     inherit! :search_paths
