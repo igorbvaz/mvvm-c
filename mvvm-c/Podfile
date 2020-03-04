@@ -9,6 +9,7 @@ target 'mvvm-c' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  pod 'R.swift'
   pod 'Alamofire'
 
   target 'mvvm-cTests' do

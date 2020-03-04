@@ -21,7 +21,8 @@ class Service {
                     }
                 }
             }
-            Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+
+            Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: ["apikey":Keys.publicKey, "ts": Keys.ts, "hash": Keys.hash]).responseJSON { (response) in
                 if response.result.isSuccess {
                     if let data = response.data {
                         if let object = try? JSONDecoder().decode(T.self, from: data) {

@@ -14,6 +14,15 @@
 		780DC83A240F39D30035F028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC839240F39D30035F028 /* ViewController.swift */; };
 		780DC83C240F3A8E0035F028 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC83B240F3A8E0035F028 /* Result.swift */; };
 		780DC83E240F3B400035F028 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC83D240F3B400035F028 /* Endpoints.swift */; };
+		780DC840240F3D240035F028 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC83F240F3D240035F028 /* Keys.swift */; };
+		780DC842240F3EB90035F028 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC841240F3EB90035F028 /* UIViewController.swift */; };
+		780DC844240F41B70035F028 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC843240F41B70035F028 /* AppCoordinator.swift */; };
+		780DC846240F444C0035F028 /* MarvelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC845240F444C0035F028 /* MarvelViewController.swift */; };
+		780DC849240F45520035F028 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC848240F45520035F028 /* R.generated.swift */; };
+		780DC84B240F45D10035F028 /* MarvelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC84A240F45D10035F028 /* MarvelViewModel.swift */; };
+		780DC84D240F46250035F028 /* MarvelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC84C240F46250035F028 /* MarvelCoordinator.swift */; };
+		780DC84F240F48AE0035F028 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC84E240F48AE0035F028 /* NavigationController.swift */; };
+		780DC851240F49EC0035F028 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC850240F49EC0035F028 /* UINavigationBar.swift */; };
 		78160B16240F35FC000537A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78160B15240F35FC000537A7 /* AppDelegate.swift */; };
 		78160B18240F35FC000537A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78160B17240F35FC000537A7 /* SceneDelegate.swift */; };
 		78160B1D240F35FC000537A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78160B1B240F35FC000537A7 /* Main.storyboard */; };
@@ -51,6 +60,15 @@
 		780DC839240F39D30035F028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		780DC83B240F3A8E0035F028 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		780DC83D240F3B400035F028 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		780DC83F240F3D240035F028 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		780DC841240F3EB90035F028 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		780DC843240F41B70035F028 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		780DC845240F444C0035F028 /* MarvelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelViewController.swift; sourceTree = "<group>"; };
+		780DC848240F45520035F028 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		780DC84A240F45D10035F028 /* MarvelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelViewModel.swift; sourceTree = "<group>"; };
+		780DC84C240F46250035F028 /* MarvelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCoordinator.swift; sourceTree = "<group>"; };
+		780DC84E240F48AE0035F028 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		780DC850240F49EC0035F028 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		78160B12240F35FC000537A7 /* mvvm-c.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mvvm-c.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78160B15240F35FC000537A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78160B17240F35FC000537A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +141,7 @@
 				78160B26240F35FF000537A7 /* Info.plist */,
 				78160B1E240F35FC000537A7 /* mvvm_c.xcdatamodeld */,
 				78160B21240F35FF000537A7 /* Assets.xcassets */,
+				780DC848240F45520035F028 /* R.generated.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -130,6 +149,8 @@
 		780DC825240F37050035F028 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				780DC843240F41B70035F028 /* AppCoordinator.swift */,
+				780DC84C240F46250035F028 /* MarvelCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -148,6 +169,7 @@
 		780DC828240F375B0035F028 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				780DC84A240F45D10035F028 /* MarvelViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -155,6 +177,7 @@
 		780DC829240F37700035F028 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				780DC845240F444C0035F028 /* MarvelViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -193,6 +216,7 @@
 			children = (
 				780DC83B240F3A8E0035F028 /* Result.swift */,
 				780DC83D240F3B400035F028 /* Endpoints.swift */,
+				780DC83F240F3D240035F028 /* Keys.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -204,6 +228,7 @@
 				780DC833240F39640035F028 /* Coordinator.swift */,
 				780DC835240F39770035F028 /* ViewModel.swift */,
 				780DC839240F39D30035F028 /* ViewController.swift */,
+				780DC84E240F48AE0035F028 /* NavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -211,6 +236,8 @@
 		780DC830240F37BB0035F028 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				780DC841240F3EB90035F028 /* UIViewController.swift */,
+				780DC850240F49EC0035F028 /* UINavigationBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -298,6 +325,7 @@
 			buildConfigurationList = 78160B3F240F35FF000537A7 /* Build configuration list for PBXNativeTarget "mvvm-c" */;
 			buildPhases = (
 				EFAFBB2CC1ADE92FD00BEA5A /* [CP] Check Pods Manifest.lock */,
+				780DC847240F450B0035F028 /* R.swift */,
 				78160B0E240F35FC000537A7 /* Sources */,
 				78160B0F240F35FC000537A7 /* Frameworks */,
 				78160B10240F35FC000537A7 /* Resources */,
@@ -438,6 +466,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		780DC847240F450B0035F028 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		EFAFBB2CC1ADE92FD00BEA5A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -481,15 +529,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780DC844240F41B70035F028 /* AppCoordinator.swift in Sources */,
+				780DC849240F45520035F028 /* R.generated.swift in Sources */,
 				780DC838240F398D0035F028 /* Service.swift in Sources */,
 				78160B16240F35FC000537A7 /* AppDelegate.swift in Sources */,
 				780DC834240F39640035F028 /* Coordinator.swift in Sources */,
+				780DC84F240F48AE0035F028 /* NavigationController.swift in Sources */,
+				780DC842240F3EB90035F028 /* UIViewController.swift in Sources */,
 				78160B18240F35FC000537A7 /* SceneDelegate.swift in Sources */,
 				780DC836240F39770035F028 /* ViewModel.swift in Sources */,
+				780DC84B240F45D10035F028 /* MarvelViewModel.swift in Sources */,
+				780DC846240F444C0035F028 /* MarvelViewController.swift in Sources */,
 				780DC83A240F39D30035F028 /* ViewController.swift in Sources */,
 				780DC83C240F3A8E0035F028 /* Result.swift in Sources */,
 				780DC83E240F3B400035F028 /* Endpoints.swift in Sources */,
+				780DC84D240F46250035F028 /* MarvelCoordinator.swift in Sources */,
+				780DC851240F49EC0035F028 /* UINavigationBar.swift in Sources */,
 				78160B20240F35FC000537A7 /* mvvm_c.xcdatamodeld in Sources */,
+				780DC840240F3D240035F028 /* Keys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
