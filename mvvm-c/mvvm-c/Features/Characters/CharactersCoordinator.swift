@@ -1,5 +1,5 @@
 //
-//  AppCoordinator.swift
+//  CharactersCoordinator.swift
 //  mvvm-c
 //
 //  Created by Igor Vaz on 03/03/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
+class CharactersCoordinator: Coordinator {
     var navigationController: NavigationController
 
     required init(navigationController: NavigationController) {
@@ -16,8 +16,7 @@ class AppCoordinator: Coordinator {
     }
 
     func start() {
-        let marvelCoordinator = MarvelCoordinator(navigationController: navigationController)
-        marvelCoordinator.start()
+        let charactersViewController = CharactersViewController(viewModel: CharactersViewModel(coordinator: self))
+        navigationController.pushViewController(charactersViewController, animated: false)
     }
-
 }

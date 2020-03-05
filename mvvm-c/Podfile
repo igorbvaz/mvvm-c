@@ -11,6 +11,7 @@ target 'mvvm-c' do
   pod 'RxDataSources'
   pod 'R.swift'
   pod 'Alamofire'
+  pod 'SnapKit'
 
   target 'mvvm-cTests' do
     inherit! :search_paths
