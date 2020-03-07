@@ -12,7 +12,7 @@ import RxSwift
 
 class Service {
     func request<T: Decodable>(url: String, method: HTTPMethod, parameters: Parameters?) -> Observable<Result<T>> {
-        return Observable.create { (observer) -> Disposable in
+        return Observable.create { [weak self] (observer) -> Disposable in
             Alamofire.SessionManager.default.session.getAllTasks { tasks in
                 tasks.forEach { (task) in
                     if task.currentRequest?.url?.absoluteString == url {
@@ -22,14 +22,9 @@ class Service {
                 }
             }
 
-            Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: ["apikey":Keys.publicKey, "ts": Keys.ts, "hash": Keys.hash]).responseJSON { (response) in
-                if response.result.isSuccess {
-                    if let data = response.data {
-                        if let object = try? JSONDecoder().decode(T.self, from: data) {
-                            observer.onNext(.success(value: object))
-                        }
-                    }
-                } else if let code = (response.error as NSError?)?.code {
+            guard let urlWithKeys = self?.handleUrl(url: url) else { return Disposables.create() }
+            Alamofire.request(urlWithKeys, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+                if let code = (response.error as NSError?)?.code {
                     if code == NSURLErrorNetworkConnectionLost || code == NSURLErrorCancelled {
 
                     } else {
@@ -37,10 +32,29 @@ class Service {
                             observer.onNext(.failure(error: error))
                         }
                     }
+                } else if response.result.isSuccess {
+                    if let data = response.data {
+                        do {
+                            let object = try JSONDecoder().decode(T.self, from: data)
+                            print("Got \(T.self) from request")
+                            observer.onNext(.success(value: object))
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
                 }
                 observer.onCompleted()
             }
             return Disposables.create()
         }
+    }
+
+    func handleUrl(url: String) -> String {
+        if url.contains("?") {
+            return url + "&apikey=\(Keys.publicKey)&ts=\(Keys.ts)&hash=\(Keys.hash)"
+        } else {
+            return url + "?apikey=\(Keys.publicKey)&ts=\(Keys.ts)&hash=\(Keys.hash)"
+        }
+
     }
 }

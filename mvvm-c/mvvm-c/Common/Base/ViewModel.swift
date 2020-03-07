@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 
-protocol ViewModel: class {
-    var disposeBag: DisposeBag { get set }
+protocol ViewModelProtocol {
+
+    var disposeBag: DisposeBag { get }
+    
 }

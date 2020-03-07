@@ -20,4 +20,6 @@ class AppCoordinator: Coordinator {
         charactersCoordinator.start()
     }
 
+    func route(path: CoordinatorPath) {}
+
 }

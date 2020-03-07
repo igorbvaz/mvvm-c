@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxDataSources
 
-class CharactersViewController: ViewController {
+class CharactersViewController: ViewController<CharactersView> {
 
     var viewModel: CharactersViewModel!
+
+    let dataSource = RxTableViewSectionedReloadDataSource<SectionViewModel<CharacterItemViewModel>>(configureCell: { _, _, _, _ -> UITableViewCell in
+        return UITableViewCell()
+    })
 
     init(viewModel: CharactersViewModel) {
         self.viewModel = viewModel
@@ -22,12 +28,61 @@ class CharactersViewController: ViewController {
     }
 
     override func loadView() {
-        view = CharactersView()
+        super.loadView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+        setupOutputs()
+        viewModel.inputs.didAppear.onNext(())
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
     }
 
+}
+
+extension CharactersViewController {
+    private func setupTableView() {
+        let identifier = String(describing: CharacterCell.self)
+        mainView.tableView.register(CharacterCell.self, forCellReuseIdentifier: identifier)
+
+        dataSource.configureCell = { _, tableView, indexPath, viewModel in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CharacterCell else { return CharacterCell() }
+            cell.viewModel = viewModel
+            return cell
+        }
+
+        mainView.tableView.rx.itemSelected.bind(onNext: { [weak self] indexPath in
+            self?.mainView.tableView.deselectRow(at: indexPath, animated: true)
+        }).disposed(by: disposeBag)
+
+        mainView.tableView.rx.willDisplayCell.map { $0.indexPath }.bind(to: viewModel.inputs.willDisplayCharacterCell).disposed(by: disposeBag)
+
+        mainView.tableView.rx.modelSelected(CharacterItemViewModel.self).map { $0.character }.bind(to: viewModel.inputs.characterSelected).disposed(by: disposeBag)
+
+    }
+
+    private func setupOutputs() {
+        viewModel.outputs.dataSource.drive(mainView.tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+
+        viewModel.outputs.showCharactersEmptyStateDriver.drive(onNext: { [weak self] show in
+            if show {
+                self?.mainView.tableView.tableFooterView = EmptyStateView(frame: .zero)
+            } else {
+                self?.mainView.tableView.tableFooterView = UIView()
+            }
+        }).disposed(by: disposeBag)
+
+        viewModel.outputs.showCharactersLoadingStateDriver.drive(onNext: { [weak self] show in
+            if show {
+                self?.mainView.tableView.tableFooterView = LoadingStateView(size: .init(width: 100, height: 100),text: "Carregando...")
+            } else {
+                self?.mainView.tableView.tableFooterView = UIView()
+            }
+        }).disposed(by: disposeBag)
+    }
 }

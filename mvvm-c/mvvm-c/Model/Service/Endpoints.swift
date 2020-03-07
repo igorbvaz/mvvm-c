@@ -24,12 +24,12 @@ class Endpoints {
     }
 
     enum Characters: Endpoint {
-        case getCharacters
+        case getCharacters(offset: Int)
 
         var path: String {
             switch self {
-            case .getCharacters:
-                return "/characters"
+            case .getCharacters(let offset):
+                return "/characters?offset=\(offset)&limit=20"
             }
         }
 

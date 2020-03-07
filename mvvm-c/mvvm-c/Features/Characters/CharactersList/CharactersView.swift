@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class CharactersView: UIView {
+
+    var tableView = UITableView()
 
     init() {
         super.init(frame: .zero)
@@ -21,6 +24,7 @@ class CharactersView: UIView {
 
     private func setup() {
         setupAppearance()
+        setupTableView()
     }
 
 }
@@ -28,7 +32,14 @@ class CharactersView: UIView {
 extension CharactersView {
 
     private func setupAppearance() {
-        backgroundColor = UIColor.red
+
     }
 
+    private func setupTableView() {
+        addSubview(tableView)
+
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
 }

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+protocol CoordinatorPath {}
 
 protocol Coordinator {
     var navigationController: NavigationController { get }
     init(navigationController: NavigationController)
     func start()
+    func route(path: CoordinatorPath)
 }

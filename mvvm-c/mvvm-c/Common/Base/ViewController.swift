@@ -9,6 +9,12 @@
 import UIKit
 import RxSwift
 
-class ViewController: UIViewController {
+class ViewController<T: UIView>: UIViewController {
     let disposeBag = DisposeBag()
+
+    var mainView = T()
+
+    override func loadView() {
+        view = mainView
+    }
 }

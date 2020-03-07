@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (4.9.1)
   - Differentiator (4.0.1)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
   - R.swift (5.1.0):
     - R.swift.Library (~> 5.1.0)
   - R.swift.Library (5.1.0)
@@ -14,39 +17,53 @@ PODS:
   - RxRelay (5.0.1):
     - RxSwift (~> 5)
   - RxSwift (5.0.1)
+  - RxSwiftExt (5.2.0):
+    - RxSwiftExt/Core (= 5.2.0)
+    - RxSwiftExt/RxCocoa (= 5.2.0)
+  - RxSwiftExt/Core (5.2.0):
+    - RxSwift (~> 5.0)
+  - RxSwiftExt/RxCocoa (5.2.0):
+    - RxCocoa (~> 5.0)
+    - RxSwiftExt/Core
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - NVActivityIndicatorView
   - R.swift
   - RxCocoa
   - RxDataSources
   - RxSwift
+  - RxSwiftExt
   - SnapKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Differentiator
+    - NVActivityIndicatorView
     - R.swift
     - R.swift.Library
     - RxCocoa
     - RxDataSources
     - RxRelay
     - RxSwift
+    - RxSwiftExt
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 6f4ab5b21cb00f6aa11bd12538a76035b2fcfb04
+PODFILE CHECKSUM: 9b6fd6249c0eb548afdae9e50ad0f06e44deb9b4
 
 COCOAPODS: 1.5.2
