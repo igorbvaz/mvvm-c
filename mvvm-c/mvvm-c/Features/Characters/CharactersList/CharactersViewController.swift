@@ -35,7 +35,7 @@ class CharactersViewController: ViewController<CharactersView> {
         super.viewDidLoad()
         setupTableView()
         setupOutputs()
-        viewModel.inputs.didAppear.onNext(())
+        viewModel.inputs.didLoad.onNext(())
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +60,11 @@ extension CharactersViewController {
             self?.mainView.tableView.deselectRow(at: indexPath, animated: true)
         }).disposed(by: disposeBag)
 
-        mainView.tableView.rx.willDisplayCell.map { $0.indexPath }.bind(to: viewModel.inputs.willDisplayCharacterCell).disposed(by: disposeBag)
+        mainView.tableView.rx.willDisplayCell.bind(onNext: { [weak self] event in
+            if event.indexPath.row == (self?.mainView.tableView.numberOfRows(inSection: 0) ?? 0) - 5 {
+                self?.viewModel.loadNextPage.onNext(())
+            }
+        }).disposed(by: disposeBag)
 
         mainView.tableView.rx.modelSelected(CharacterItemViewModel.self).map { $0.character }.bind(to: viewModel.inputs.characterSelected).disposed(by: disposeBag)
 
@@ -83,6 +87,10 @@ extension CharactersViewController {
             } else {
                 self?.mainView.tableView.tableFooterView = UIView()
             }
+        }).disposed(by: disposeBag)
+
+        viewModel.outputs.errorDriver.drive(onNext: { [weak self] error in
+            self?.showAlert(text: error)
         }).disposed(by: disposeBag)
     }
 }

@@ -11,7 +11,9 @@ import UIKit
 enum CharactersPath: CoordinatorPath {
     case details(character: Character)
 }
-class CharactersCoordinator: Coordinator {
+protocol CharactersCoordinatorProtocol: Coordinator {}
+
+class CharactersCoordinator: CharactersCoordinatorProtocol {
 
     var navigationController: NavigationController
 

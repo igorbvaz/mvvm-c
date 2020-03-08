@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharactersResponse: Decodable {
+struct CharactersResponse: Decodable {
     var code: Int
     var data = DataResponse()
 }

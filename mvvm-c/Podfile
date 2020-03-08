@@ -3,7 +3,7 @@
 
 target 'mvvm-c' do
   # Comment the next line if you don't want to use dynamic frameworks
-  #use_frameworks!
+  use_frameworks!
 
   # Pods for mvvm-c
   pod 'RxSwift'
@@ -11,6 +11,7 @@ target 'mvvm-c' do
   pod 'RxDataSources'
   pod 'R.swift'
   pod 'RxSwiftExt'
+  pod 'RxTest'
   pod 'Alamofire'
   pod 'SnapKit'
   pod 'NVActivityIndicatorView'
@@ -18,6 +19,8 @@ target 'mvvm-c' do
   target 'mvvm-cTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
   end
 
   target 'mvvm-cUITests' do

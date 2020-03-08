@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DataResponse: Decodable {
+struct DataResponse: Decodable {
     var offset: Int = 0
     var results = [Character]()
 }

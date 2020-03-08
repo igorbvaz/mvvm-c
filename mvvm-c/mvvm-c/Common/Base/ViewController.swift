@@ -17,4 +17,11 @@ class ViewController<T: UIView>: UIViewController {
     override func loadView() {
         view = mainView
     }
+
+    func showAlert(text: String?) {
+        guard let text = text, !text.isEmpty else { return }
+        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

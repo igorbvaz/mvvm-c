@@ -1,4 +1,4 @@
-module Pods_mvvm_c_mvvm_cUITests {
+framework module Pods_mvvm_c_mvvm_cUITests {
   umbrella header "Pods-mvvm-c-mvvm-cUITests-umbrella.h"
 
   export *

@@ -1,4 +1,4 @@
-module Pods_mvvm_c {
+framework module Pods_mvvm_c {
   umbrella header "Pods-mvvm-c-umbrella.h"
 
   export *
