@@ -30,7 +30,8 @@ class CharactersCoordinator: CharactersCoordinatorProtocol {
         guard let path = path as? CharactersPath else { return }
         switch path {
         case .details(let character):
-            print("Going to Details Screen with character: \(character.name)")
+            let viewController = CharacterDetailsViewController(viewModel: CharacterDetailsViewModel(coordinator: self, character: character))
+            navigationController.pushViewController(viewController, animated: true)
         }
     }
 }
