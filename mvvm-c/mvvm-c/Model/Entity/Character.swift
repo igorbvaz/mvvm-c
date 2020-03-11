@@ -9,6 +9,5 @@
 import UIKit
 
 struct Character: Decodable {
-    var id: Int
     var name: String
 }

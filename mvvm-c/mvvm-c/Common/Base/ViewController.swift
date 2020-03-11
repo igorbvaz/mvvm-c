@@ -18,6 +18,10 @@ class ViewController<T: UIView>: UIViewController {
         view = mainView
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
     func showAlert(text: String?) {
         guard let text = text, !text.isEmpty else { return }
         let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)

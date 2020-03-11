@@ -35,6 +35,7 @@ class CharactersViewController: ViewController<CharactersView> {
         super.viewDidLoad()
         setupTableView()
         setupOutputs()
+        setupInputs()
         viewModel.inputs.didLoad.onNext(())
     }
 
@@ -66,8 +67,6 @@ extension CharactersViewController {
             }
         }).disposed(by: disposeBag)
 
-        mainView.tableView.rx.modelSelected(CharacterItemViewModel.self).map { $0.character }.bind(to: viewModel.inputs.characterSelected).disposed(by: disposeBag)
-
     }
 
     private func setupOutputs() {
@@ -83,7 +82,7 @@ extension CharactersViewController {
 
         viewModel.outputs.showCharactersLoadingStateDriver.drive(onNext: { [weak self] show in
             if show {
-                self?.mainView.tableView.tableFooterView = LoadingStateView(size: .init(width: 100, height: 100),text: "Carregando...")
+                self?.mainView.tableView.tableFooterView = LoadingStateView(size: .init(width: 70, height: 70),text: "Carregando...")
             } else {
                 self?.mainView.tableView.tableFooterView = UIView()
             }
@@ -92,5 +91,9 @@ extension CharactersViewController {
         viewModel.outputs.errorDriver.drive(onNext: { [weak self] error in
             self?.showAlert(text: error)
         }).disposed(by: disposeBag)
+    }
+
+    private func setupInputs() {
+        mainView.tableView.rx.modelSelected(CharacterItemViewModel.self).map { $0.character }.bind(to: viewModel.inputs.characterSelected).disposed(by: disposeBag)
     }
 }

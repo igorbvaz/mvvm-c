@@ -7,20 +7,19 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 class LoadingStateView: UIView {
 
     private var stackView = UIStackView()
-    var activityIndicatorView: NVActivityIndicatorView!
+    var activityIndicatorView: UIActivityIndicatorView!
     var textLabel = UILabel()
 
     private var text: String?
 
-    convenience init(size: CGSize, activityIndicator: NVActivityIndicatorType = .ballRotateChase, text: String = "") {
+    convenience init(size: CGSize, text: String = "") {
         self.init(frame: CGRect(origin: .zero, size: size))
         self.text = text
-        self.activityIndicatorView = NVActivityIndicatorView(frame: CGRect(origin: .zero, size: CGSize(width: 32, height: 32)), type: .ballRotateChase, color: UIColor.lightGray, padding: 0)
+        self.activityIndicatorView = UIActivityIndicatorView(style: .medium)
         setup()
     }
 
@@ -35,7 +34,7 @@ class LoadingStateView: UIView {
         stackView.spacing = 8
 
         stackView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+            make.left.right.centerY.equalToSuperview()
         }
 
         setupActivityIndicatorView()
@@ -55,7 +54,7 @@ class LoadingStateView: UIView {
         textLabel.font = UIFont(name: "Euphemia UCAS", size: 12)
         textLabel.textColor = UIColor.lightGray
         textLabel.textAlignment = .center
-        textLabel.numberOfLines = 0
+        textLabel.numberOfLines = 1
     }
 
 }

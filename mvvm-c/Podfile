@@ -13,7 +13,6 @@ target 'mvvm-c' do
   pod 'RxSwiftExt'
   pod 'Alamofire'
   pod 'SnapKit'
-  pod 'NVActivityIndicatorView'
 
   target 'mvvm-cTests' do
     inherit! :search_paths

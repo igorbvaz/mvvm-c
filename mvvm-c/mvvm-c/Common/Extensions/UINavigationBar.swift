@@ -10,7 +10,7 @@ import UIKit
 
 extension UINavigationBar {
 
-    @IBInspectable var transparent: Bool {
+    var transparent: Bool {
         get {
             return false
         }

@@ -12,17 +12,9 @@ import RxSwift
 
 class Service {
     func request<T: Decodable>(url: String, method: HTTPMethod, parameters: Parameters?) -> Observable<Result<T>> {
-        return Observable.create { [weak self] (observer) -> Disposable in
-//            AF.SessionManager.default.session.getAllTasks { tasks in
-//                tasks.forEach { (task) in
-//                    if task.currentRequest?.url?.absoluteString == url {
-//                        print("URL: \(url) WAS CANCELLED!")
-//                        task.cancel()
-//                    }
-//                }
-//            }
+        return Observable.create { (observer) -> Disposable in
 
-            guard let urlWithKeys = self?.handleUrl(url: url) else { return Disposables.create() }
+            let urlWithKeys = self.handleUrl(url: url)
             AF.request(urlWithKeys, method: method, parameters: parameters, headers: nil).validate(statusCode: 200..<300).responseDecodable(of: T.self) { (response) in
                 switch response.result {
                 case .success:
@@ -34,6 +26,7 @@ class Service {
                 observer.onCompleted()
             }
             return Disposables.create()
+
         }
     }
 

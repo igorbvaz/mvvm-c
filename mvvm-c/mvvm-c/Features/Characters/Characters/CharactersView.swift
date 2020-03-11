@@ -32,14 +32,18 @@ class CharactersView: UIView {
 extension CharactersView {
 
     private func setupAppearance() {
-
+        backgroundColor = R.color.background()
     }
 
     private func setupTableView() {
         addSubview(tableView)
 
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview().offset(UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0).priority(.high)
+            make.left.right.bottom.equalToSuperview()
         }
+
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.automaticallyAdjustsScrollIndicatorInsets = false
     }
 }
