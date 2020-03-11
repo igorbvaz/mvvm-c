@@ -10,6 +10,8 @@ import XCTest
 
 class mvvm_cUITests: XCTestCase {
 
+    let app = XCUIApplication()
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -23,12 +25,12 @@ class mvvm_cUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    func test_CheckCharacterDetails() {
         app.launch()
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        app.tables.staticTexts["Aaron Stack"].tap()
+        XCTAssertTrue(app.staticTexts["Aaron Stack"].exists)
+        app.navigationBars["mvvm_c.CharacterDetailsView"].buttons["Back"].tap()
+
     }
 }
