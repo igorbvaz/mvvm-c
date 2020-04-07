@@ -28,9 +28,9 @@ class CharacterDetailsViewModel: CharacterDetailsViewModelProtocol, CharacterDet
     var disposeBag = DisposeBag()
 
     var characterReplaySubject = ReplaySubject<Character>.create(bufferSize: 1)
-    var coordinator: CharactersCoordinatorProtocol
+    var coordinator: CharactersCoordinator
 
-    init(coordinator: CharactersCoordinatorProtocol, service: CharactersServiceProtocol = CharactersService(), character: Character) {
+    init(coordinator: CharactersCoordinator, service: CharactersServiceProtocol = CharactersService(), character: Character) {
         self.coordinator = coordinator
         self.characterReplaySubject.onNext(character)
     }
