@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterDetailsViewController: ViewController<CharacterDetailsView> {
+class CharacterDetailsViewController: IVViewController<CharacterDetailsView> {
 
     var viewModel: CharacterDetailsViewModel!
 

@@ -7,10 +7,12 @@
 //
 
 import UIKit
+
 enum PresentationStyle {
     case push
     case modal
 }
+
 protocol CoordinatorPath {}
 
 protocol Coordinator: NSObject, UINavigationControllerDelegate {
@@ -44,6 +46,7 @@ extension Coordinator {
         case .modal:
             let navigationController = NavigationController()
             navigationController.setViewControllers([viewController], animated: false)
+            viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: viewController, action: #selector(viewController.dismissAnimated))
             self.navigationController.topViewController?.present(navigationController, animated: true, completion: nil)
         }
     }

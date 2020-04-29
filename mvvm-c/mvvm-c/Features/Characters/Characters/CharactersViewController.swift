@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-class CharactersViewController: ViewController<CharactersView> {
+class CharactersViewController: IVViewController<CharactersView> {
 
     var viewModel: CharactersViewModel!
 

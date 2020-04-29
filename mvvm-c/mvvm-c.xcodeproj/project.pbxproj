@@ -11,7 +11,7 @@
 		780DC834240F39640035F028 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC833240F39640035F028 /* Coordinator.swift */; };
 		780DC836240F39770035F028 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC835240F39770035F028 /* ViewModel.swift */; };
 		780DC838240F398D0035F028 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC837240F398D0035F028 /* Service.swift */; };
-		780DC83A240F39D30035F028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC839240F39D30035F028 /* ViewController.swift */; };
+		780DC83A240F39D30035F028 /* IVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC839240F39D30035F028 /* IVViewController.swift */; };
 		780DC83C240F3A8E0035F028 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC83B240F3A8E0035F028 /* Result.swift */; };
 		780DC83E240F3B400035F028 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC83D240F3B400035F028 /* Endpoints.swift */; };
 		780DC840240F3D240035F028 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780DC83F240F3D240035F028 /* Keys.swift */; };
@@ -42,6 +42,7 @@
 		78DF09602411CF5B00F1A323 /* CharacterItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF095F2411CF5B00F1A323 /* CharacterItemViewModel.swift */; };
 		78DF09622411DB5F00F1A323 /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF09612411DB5F00F1A323 /* DataResponse.swift */; };
 		78DF09662411DC1400F1A323 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF09652411DC1400F1A323 /* Character.swift */; };
+		78F24EC324590280007751EF /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F24EC224590280007751EF /* UIViewController.swift */; };
 		78F50B5224184EB700BB1066 /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F50B5124184EB700BB1066 /* CharacterDetailsViewController.swift */; };
 		78F50B5424184EF300BB1066 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F50B5324184EF300BB1066 /* CharacterDetailsViewModel.swift */; };
 		78F50B5624184F1300BB1066 /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F50B5524184F1300BB1066 /* CharacterDetailsView.swift */; };
@@ -73,7 +74,7 @@
 		780DC833240F39640035F028 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		780DC835240F39770035F028 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		780DC837240F398D0035F028 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		780DC839240F39D30035F028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		780DC839240F39D30035F028 /* IVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IVViewController.swift; sourceTree = "<group>"; };
 		780DC83B240F3A8E0035F028 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		780DC83D240F3B400035F028 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		780DC83F240F3D240035F028 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		78DF095F2411CF5B00F1A323 /* CharacterItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemViewModel.swift; sourceTree = "<group>"; };
 		78DF09612411DB5F00F1A323 /* DataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponse.swift; sourceTree = "<group>"; };
 		78DF09652411DC1400F1A323 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		78F24EC224590280007751EF /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		78F50B5124184EB700BB1066 /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		78F50B5324184EF300BB1066 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
 		78F50B5524184F1300BB1066 /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
@@ -230,7 +232,7 @@
 				780DC837240F398D0035F028 /* Service.swift */,
 				780DC833240F39640035F028 /* Coordinator.swift */,
 				780DC835240F39770035F028 /* ViewModel.swift */,
-				780DC839240F39D30035F028 /* ViewController.swift */,
+				780DC839240F39D30035F028 /* IVViewController.swift */,
 				780DC84E240F48AE0035F028 /* NavigationController.swift */,
 				78DF095B2411CD1100F1A323 /* SectionViewModel.swift */,
 			);
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				780DC850240F49EC0035F028 /* UINavigationBar.swift */,
+				78F24EC224590280007751EF /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -597,7 +600,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -695,7 +698,7 @@
 				78F50B582418731100BB1066 /* EmptyStateView.swift in Sources */,
 				78DF095C2411CD1100F1A323 /* SectionViewModel.swift in Sources */,
 				78F50B5424184EF300BB1066 /* CharacterDetailsViewModel.swift in Sources */,
-				780DC83A240F39D30035F028 /* ViewController.swift in Sources */,
+				780DC83A240F39D30035F028 /* IVViewController.swift in Sources */,
 				780DC83C240F3A8E0035F028 /* Result.swift in Sources */,
 				780DC83E240F3B400035F028 /* Endpoints.swift in Sources */,
 				780DC84D240F46250035F028 /* CharactersCoordinator.swift in Sources */,
@@ -707,6 +710,7 @@
 				780DC851240F49EC0035F028 /* UINavigationBar.swift in Sources */,
 				78DF09572411C90100F1A323 /* CharactersService.swift in Sources */,
 				78160B20240F35FC000537A7 /* mvvm_c.xcdatamodeld in Sources */,
+				78F24EC324590280007751EF /* UIViewController.swift in Sources */,
 				78DF09662411DC1400F1A323 /* Character.swift in Sources */,
 				78DF09622411DB5F00F1A323 /* DataResponse.swift in Sources */,
 				780DC840240F3D240035F028 /* Keys.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  IVViewController.swift
 //  mvvm-c
 //
 //  Created by Igor Vaz on 03/03/20.
@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class ViewController<T: UIView>: UIViewController {
+class IVViewController<T: UIView>: UIViewController {
     let disposeBag = DisposeBag()
 
     var mainView = T()
@@ -20,6 +20,10 @@ class ViewController<T: UIView>: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    @objc func dismiss() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     func showAlert(text: String?) {

@@ -31,7 +31,7 @@ class CharactersCoordinator: NSObject, Coordinator {
         switch path {
         case .details(let character):
             let viewController = CharacterDetailsViewController(viewModel: CharacterDetailsViewModel(coordinator: self, character: character))
-            show(viewController: viewController, presentationStyle: .push)
+            show(viewController: viewController, presentationStyle: .modal)
         }
     }
 

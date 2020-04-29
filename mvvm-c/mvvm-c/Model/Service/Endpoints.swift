@@ -9,32 +9,36 @@
 import Foundation
 
 protocol Endpoint {
-    var path: String { get }
     var url: String { get }
-}
-
-struct API {
-    static let baseUrl = "https://gateway.marvel.com:443/v1/public"
 }
 
 class Endpoints {
 
-    private static func getUrl(path: String) -> String {
-        return "\(API.baseUrl)\(path)"
+    private static func getUrl(path: String, queryItems: [URLQueryItem]) -> String {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "gateway.marvel.com"
+        components.port = 443
+        components.path = "/v1/public" + path
+        components.queryItems = queryItems
+        components.queryItems?.append(URLQueryItem(name: "apikey", value: Keys.publicKey))
+        components.queryItems?.append(URLQueryItem(name: "ts", value: Keys.ts))
+        components.queryItems?.append(URLQueryItem(name: "hash", value: Keys.hash))
+        return components.url?.absoluteString ?? ""
     }
 
     enum Characters: Endpoint {
         case getCharacters(offset: Int)
 
-        var path: String {
+        var url: String {
             switch self {
             case .getCharacters(let offset):
-                return "/characters?offset=\(offset)&limit=20"
+                return Endpoints.getUrl(path: "/characters", queryItems: [
+                    URLQueryItem(name: "offset", value: String(describing: offset)),
+                    URLQueryItem(name: "limit", value: String(describing: 20))
+                ])
             }
-        }
 
-        var url: String {
-            return Endpoints.getUrl(path: path)
         }
     }
 
