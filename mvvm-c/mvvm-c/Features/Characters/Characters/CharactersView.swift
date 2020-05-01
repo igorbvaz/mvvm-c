@@ -39,11 +39,9 @@ extension CharactersView {
         addSubview(tableView)
 
         tableView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0).priority(.high)
+            make.top.equalToSuperview().priority(.high)
             make.left.right.bottom.equalToSuperview()
         }
 
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.automaticallyAdjustsScrollIndicatorInsets = false
     }
 }

@@ -12,14 +12,7 @@ enum CharactersPath: CoordinatorPath {
     case details(character: Character)
 }
 
-class CharactersCoordinator: NSObject, Coordinator {
-    var childCoordinators: [Coordinator]
-    var navigationController: NavigationController
-
-    required init(navigationController: NavigationController) {
-        self.navigationController = navigationController
-        self.childCoordinators = []
-    }
+class CharactersCoordinator: Coordinator {
 
     func start(presentationStyle: PresentationStyle) {
         let charactersViewController = CharactersViewController(viewModel: CharactersViewModel(coordinator: self))
@@ -30,14 +23,15 @@ class CharactersCoordinator: NSObject, Coordinator {
         guard let path = path as? CharactersPath else { return }
         switch path {
         case .details(let character):
-            let viewController = CharacterDetailsViewController(viewModel: CharacterDetailsViewModel(coordinator: self, character: character))
-            show(viewController: viewController, presentationStyle: .modal)
+//            let viewController = CharacterDetailsViewController(viewModel: CharacterDetailsViewModel(coordinator: self, character: character))
+//            show(viewController: viewController, presentationStyle: .modal)
+            if character.name == "Aaron Stack" {
+                CharactersCoordinator().start(presentationStyle: .push)
+            } else {
+                CharactersCoordinator().start(presentationStyle: .modal)
+            }
+
         }
     }
-
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-//        if let viewController = isPopping() as? CharacterDetailsViewController {
-//            childDidFinish(viewController.viewModel.coordinator)
-//        }
-    }
+    
 }

@@ -34,6 +34,7 @@
 		7888EC0F241421AF00A7DBE0 /* CharactersMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888EC0E241421AF00A7DBE0 /* CharactersMock.swift */; };
 		7888EC1124156AC600A7DBE0 /* CharactersServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888EC1024156AC600A7DBE0 /* CharactersServiceMock.swift */; };
 		7888EC1324156B8000A7DBE0 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888EC1224156B8000A7DBE0 /* ResultType.swift */; };
+		789322BB245B984000DC8BCB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789322BA245B984000DC8BCB /* UIApplication.swift */; };
 		78DF09552411C19F00F1A323 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF09542411C19F00F1A323 /* CharactersView.swift */; };
 		78DF09572411C90100F1A323 /* CharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF09562411C90100F1A323 /* CharactersService.swift */; };
 		78DF095A2411C9D100F1A323 /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF09592411C9D100F1A323 /* CharactersResponse.swift */; };
@@ -103,6 +104,7 @@
 		7888EC0E241421AF00A7DBE0 /* CharactersMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersMock.swift; sourceTree = "<group>"; };
 		7888EC1024156AC600A7DBE0 /* CharactersServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersServiceMock.swift; sourceTree = "<group>"; };
 		7888EC1224156B8000A7DBE0 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
+		789322BA245B984000DC8BCB /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		78DF09542411C19F00F1A323 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		78DF09562411C90100F1A323 /* CharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersService.swift; sourceTree = "<group>"; };
 		78DF09592411C9D100F1A323 /* CharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				780DC850240F49EC0035F028 /* UINavigationBar.swift */,
 				78F24EC224590280007751EF /* UIViewController.swift */,
+				789322BA245B984000DC8BCB /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				789322BB245B984000DC8BCB /* UIApplication.swift in Sources */,
 				780DC844240F41B70035F028 /* AppCoordinator.swift in Sources */,
 				780DC849240F45520035F028 /* R.generated.swift in Sources */,
 				780DC838240F398D0035F028 /* Service.swift in Sources */,
