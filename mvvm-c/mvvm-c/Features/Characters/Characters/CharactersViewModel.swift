@@ -42,7 +42,7 @@ class CharactersViewModel: CharactersViewModelProtocol, CharactersViewModelInput
     private var charactersBehaviorRelay = BehaviorRelay<[Character]>(value: [])
     private var getCharactersIsLoadingPublishSubject = PublishSubject<Bool>()
 
-    init(coordinator: CharactersCoordinator, service: CharactersServiceProtocol = CharactersService()) {
+    init(coordinator: Coordinator, service: CharactersServiceProtocol = CharactersService()) {
         let getCharactersLoading = PublishSubject<Bool>()
         getCharactersIsLoadingPublishSubject = getCharactersLoading
         let characters = BehaviorRelay<[Character]>(value: [])

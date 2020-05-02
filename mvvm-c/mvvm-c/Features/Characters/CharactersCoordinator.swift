@@ -23,14 +23,8 @@ class CharactersCoordinator: Coordinator {
         guard let path = path as? CharactersPath else { return }
         switch path {
         case .details(let character):
-//            let viewController = CharacterDetailsViewController(viewModel: CharacterDetailsViewModel(coordinator: self, character: character))
-//            show(viewController: viewController, presentationStyle: .modal)
-            if character.name == "Aaron Stack" {
-                CharactersCoordinator().start(presentationStyle: .push)
-            } else {
-                CharactersCoordinator().start(presentationStyle: .modal)
-            }
-
+            let viewController = CharacterDetailsViewController(viewModel: CharacterDetailsViewModel(coordinator: self, character: character))
+            show(viewController: viewController, presentationStyle: .modal)
         }
     }
     

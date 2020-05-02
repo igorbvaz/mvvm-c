@@ -26,7 +26,7 @@ class CharactersViewModelSpec: QuickSpec {
             var disposeBag: DisposeBag!
 
             beforeEach {
-                coordinator = CharactersCoordinatorSpy(navigationController: NavigationController())
+                coordinator = CharactersCoordinatorSpy()
                 service = CharactersServiceMock()
                 viewModel = CharactersViewModel(coordinator: coordinator, service: service)
                 scheduler = TestScheduler(initialClock: 0)
@@ -70,8 +70,7 @@ class CharactersViewModelSpec: QuickSpec {
                         viewModel.outputs.dataSource.drive(observer).disposed(by: disposeBag)
                         scheduler.start()
                         expect(observer.events).to(containElementSatisfying({ (item) -> Bool in
-
-                            return item.value.element?.first?.items.first?.character.id == CharactersMock.character.id
+                            return item.value.element?.first?.items.first?.character.name == CharactersMock.character.name
                         }))
                     }
 

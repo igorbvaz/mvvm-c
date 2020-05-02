@@ -9,16 +9,11 @@
 import UIKit
 @testable import mvvm_c
 
-class CharactersCoordinatorSpy: CharactersCoordinatorProtocol {
+class CharactersCoordinatorSpy: Coordinator {
+
     var goToDetails = false
 
-    var navigationController: NavigationController
-
-    required init(navigationController: NavigationController) {
-        self.navigationController = navigationController
-    }
-
-    func start() {
+    func start(presentationStyle: PresentationStyle) {
 
     }
 
