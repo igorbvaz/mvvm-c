@@ -16,6 +16,7 @@ class CharactersCoordinator: Coordinator {
 
     func start(presentationStyle: PresentationStyle) {
         let charactersViewController = CharactersViewController(viewModel: CharactersViewModel(coordinator: self))
+        UINavigationController().pushViewController(charactersViewController, animated: true)
         show(viewController: charactersViewController, presentationStyle: presentationStyle)
     }
 

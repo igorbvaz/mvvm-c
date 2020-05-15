@@ -22,7 +22,20 @@ class mvvm_cUITests: XCTestCase {
     }
 
     func test_CheckCharacterDetails() {
-        app.tables.element.cells.element(boundBy: 2).tap()
-        app.navigationBars["mvvm_c.CharacterDetailsView"].buttons.firstMatch.tap()
+        let cell = app.tables.element.cells.element(boundBy: 2)
+        let tappedCharacterName = cell.staticTexts.element.label
+        cell.tap()
+        if app.staticTexts[tappedCharacterName].waitForExistence(timeout: 2) {
+            app.navigationBars["mvvm_c.CharacterDetailsView"].buttons.firstMatch.tap()
+        }
+    }
+
+    func test_pagination() {
+        let numberOfCells = app.tables.element.cells.count
+        app.swipeUp()
+        sleep(5)
+        wait(for: [XCTestExpectation], timeout: <#T##TimeInterval#>)
+        let newNumberOfCells = app.tables.element.cells.count
+        XCTAssertGreaterThan(newNumberOfCells, numberOfCells)
     }
 }

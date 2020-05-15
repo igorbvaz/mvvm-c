@@ -26,6 +26,7 @@ class CharactersViewModelSpec: QuickSpec {
             var disposeBag: DisposeBag!
 
             var showCharactersLoadingStateObserver: TestableObserver<Bool>!
+            var errorObserver: TestableObserver<String>!
             var dataSourceObserver: TestableObserver<[SectionViewModel<CharacterItemViewModel>]>!
 
             beforeEach {
@@ -36,10 +37,15 @@ class CharactersViewModelSpec: QuickSpec {
                 disposeBag = DisposeBag()
 
                 showCharactersLoadingStateObserver = scheduler.createObserver(Bool.self)
+                errorObserver = scheduler.createObserver(String.self)
                 dataSourceObserver = scheduler.createObserver([SectionViewModel<CharacterItemViewModel>].self)
 
                 viewModel.outputs.showCharactersLoadingStateDriver
                     .drive(showCharactersLoadingStateObserver)
+                    .disposed(by: disposeBag)
+
+                viewModel.outputs.errorDriver
+                    .drive(errorObserver)
                     .disposed(by: disposeBag)
 
                 viewModel.outputs.dataSource
@@ -81,6 +87,26 @@ class CharactersViewModelSpec: QuickSpec {
                     }
 
                 }
+
+                context("and service's getCharacters returns failure") {
+                    beforeEach {
+                        service.resultType = .failure
+                        scheduler.start()
+                    }
+
+                    it("should show loading state") {
+                        expect(showCharactersLoadingStateObserver.events).to(containElementSatisfying({ item -> Bool in
+                            return item.value.element == false && item.time == 10
+                        }))
+                    }
+
+                    it("should output error") {
+                        expect(errorObserver.events).to(containElementSatisfying({ item -> Bool in
+                            return item.value.element == "" && item.time == 10
+                        }))
+                    }
+
+                }
             }
 
             context("when loadNextPage") {
@@ -101,11 +127,6 @@ class CharactersViewModelSpec: QuickSpec {
                         return item.value.element == true && item.time == 20
                     }))
                 }
-
-                context(<#T##description: String!##String!#>, <#T##closure: QCKDSLEmptyBlock!##QCKDSLEmptyBlock!##() -> Void#>)
-//                it("should call service's getCharacters") {
-//                    expect(service.getCharactersCalled).to(beTrue())
-//                }
             }
 
             context("when user selects a character") {
