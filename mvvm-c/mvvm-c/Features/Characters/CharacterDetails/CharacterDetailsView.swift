@@ -8,21 +8,12 @@
 
 import UIKit
 
-class CharacterDetailsView: UIView {
+class CharacterDetailsView: IVView {
 
     var nameLabel = UILabel()
 
-    init() {
-        super.init(frame: .zero)
-        setup()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    private func setup() {
-        backgroundColor = R.color.background()
+    override func setup() {
+        super.setup()
         setupNameLabel()
     }
 

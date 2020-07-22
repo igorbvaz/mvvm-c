@@ -9,31 +9,18 @@
 import UIKit
 import SnapKit
 
-class CharactersView: UIView {
+class CharactersView: IVView {
 
     var tableView = UITableView()
 
-    init() {
-        super.init(frame: .zero)
-        setup()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    private func setup() {
-        setupAppearance()
+    override func setup() {
+        super.setup()
         setupTableView()
     }
 
 }
 
 extension CharactersView {
-
-    private func setupAppearance() {
-        backgroundColor = R.color.background()
-    }
 
     private func setupTableView() {
         addSubview(tableView)

@@ -20,25 +20,10 @@ class CharacterDetailsViewController: IVViewController<CharacterDetailsView> {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
-    override func loadView() {
-        super.loadView()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
-    }
     
-
-    private func setup() {
-        setupOutputs()
-    }
-
-}
-
-extension CharacterDetailsViewController {
-    private func setupOutputs() {
+    override func setupOutputs() {
+        super.setupOutputs()
         viewModel.nameDriver.drive(mainView.nameLabel.rx.text).disposed(by: disposeBag)
     }
+
 }
