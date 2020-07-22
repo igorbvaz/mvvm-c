@@ -35,6 +35,8 @@
 		7888EC1124156AC600A7DBE0 /* CharactersServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888EC1024156AC600A7DBE0 /* CharactersServiceMock.swift */; };
 		7888EC1324156B8000A7DBE0 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888EC1224156B8000A7DBE0 /* ResultType.swift */; };
 		789322BB245B984000DC8BCB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789322BA245B984000DC8BCB /* UIApplication.swift */; };
+		7893CEAF24C7CC8600DE487E /* IVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893CEAE24C7CC8600DE487E /* IVView.swift */; };
+		7893CEB124C7CCAE00DE487E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7893CEB024C7CCAE00DE487E /* Podfile */; };
 		78DF09552411C19F00F1A323 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF09542411C19F00F1A323 /* CharactersView.swift */; };
 		78DF09572411C90100F1A323 /* CharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF09562411C90100F1A323 /* CharactersService.swift */; };
 		78DF095A2411C9D100F1A323 /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DF09592411C9D100F1A323 /* CharactersResponse.swift */; };
@@ -105,6 +107,8 @@
 		7888EC1024156AC600A7DBE0 /* CharactersServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersServiceMock.swift; sourceTree = "<group>"; };
 		7888EC1224156B8000A7DBE0 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		789322BA245B984000DC8BCB /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		7893CEAE24C7CC8600DE487E /* IVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IVView.swift; sourceTree = "<group>"; };
+		7893CEB024C7CCAE00DE487E /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		78DF09542411C19F00F1A323 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		78DF09562411C90100F1A323 /* CharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersService.swift; sourceTree = "<group>"; };
 		78DF09592411C9D100F1A323 /* CharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				78160B1E240F35FC000537A7 /* mvvm_c.xcdatamodeld */,
 				78160B21240F35FF000537A7 /* Assets.xcassets */,
 				780DC848240F45520035F028 /* R.generated.swift */,
+				7893CEB024C7CCAE00DE487E /* Podfile */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				780DC839240F39D30035F028 /* IVViewController.swift */,
 				780DC84E240F48AE0035F028 /* NavigationController.swift */,
 				78DF095B2411CD1100F1A323 /* SectionViewModel.swift */,
+				7893CEAE24C7CC8600DE487E /* IVView.swift */,
 			);
 			path = BaseArchitecture;
 			sourceTree = "<group>";
@@ -495,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7893CEB124C7CCAE00DE487E /* Podfile in Resources */,
 				78160B25240F35FF000537A7 /* LaunchScreen.storyboard in Resources */,
 				78160B22240F35FF000537A7 /* Assets.xcassets in Resources */,
 			);
@@ -522,23 +529,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-mvvm-cTests/Pods-mvvm-cTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mvvm-cTests/Pods-mvvm-cTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mvvm-cTests/Pods-mvvm-cTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mvvm-cTests/Pods-mvvm-cTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mvvm-cTests/Pods-mvvm-cTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		42B577917900F8D2067C544A /* [CP] Check Pods Manifest.lock */ = {
@@ -564,33 +564,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-mvvm-c-mvvm-cUITests/Pods-mvvm-c-mvvm-cUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mvvm-c-mvvm-cUITests/Pods-mvvm-c-mvvm-cUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mvvm-c-mvvm-cUITests/Pods-mvvm-c-mvvm-cUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mvvm-c-mvvm-cUITests/Pods-mvvm-c-mvvm-cUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mvvm-c-mvvm-cUITests/Pods-mvvm-c-mvvm-cUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		780DC847240F450B0035F028 /* R.swift */ = {
@@ -603,7 +586,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -614,33 +597,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-mvvm-c/Pods-mvvm-c-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mvvm-c/Pods-mvvm-c-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mvvm-c/Pods-mvvm-c-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mvvm-c/Pods-mvvm-c-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mvvm-c/Pods-mvvm-c-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EFAFBB2CC1ADE92FD00BEA5A /* [CP] Check Pods Manifest.lock */ = {
@@ -707,6 +673,7 @@
 				780DC83E240F3B400035F028 /* Endpoints.swift in Sources */,
 				780DC84D240F46250035F028 /* CharactersCoordinator.swift in Sources */,
 				78DF095A2411C9D100F1A323 /* CharactersResponse.swift in Sources */,
+				7893CEAF24C7CC8600DE487E /* IVView.swift in Sources */,
 				7888EC092413F21E00A7DBE0 /* LoadingStateView.swift in Sources */,
 				78DF09552411C19F00F1A323 /* CharactersView.swift in Sources */,
 				78F50B5224184EB700BB1066 /* CharacterDetailsViewController.swift in Sources */,

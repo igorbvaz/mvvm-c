@@ -105,12 +105,10 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 2 colors.
+  /// This `R.color` struct is generated, and contains static references to 1 colors.
   struct color {
     /// Color `background`.
     static let background = Rswift.ColorResource(bundle: R.hostingBundle, name: "background")
-    /// Color `gray`.
-    static let gray = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray")
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "background", bundle: ..., traitCollection: ...)`
@@ -121,29 +119,19 @@ struct R: Rswift.Validatable {
     }
     #endif
 
-    #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "gray", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func gray(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.gray, compatibleWith: traitCollection)
-    }
-    #endif
-
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 1 images.
-  struct image {
-    /// Image `logo`.
-    static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
+  /// This `R.file` struct is generated, and contains static references to 1 files.
+  struct file {
+    /// Resource file `Podfile`.
+    static let podfile = Rswift.FileResource(bundle: R.hostingBundle, name: "Podfile", pathExtension: "")
 
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "logo", bundle: ..., traitCollection: ...)`
-    static func logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.logo, compatibleWith: traitCollection)
+    /// `bundle.url(forResource: "Podfile", withExtension: "")`
+    static func podfile(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.podfile
+      return fileResource.bundle.url(forResource: fileResource)
     }
-    #endif
 
     fileprivate init() {}
   }
