@@ -9,27 +9,32 @@
 import UIKit
 import RxSwift
 
-class IVViewController<T: UIView>: UIViewController {
+class IVViewController<T: IVView>: UIViewController {
     let disposeBag = DisposeBag()
 
     var mainView = T()
 
     override func loadView() {
         view = mainView
+        mainView.setupNavigationBar(navigationBar: navigationController?.navigationBar)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupInputs()
+        setupOutputs()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        mainView.didLayoutSubviews()
     }
 
     @objc func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }
 
-    func showAlert(text: String?) {
-        guard let text = text, !text.isEmpty else { return }
-        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+    func setupInputs() {}
+
+    func setupOutputs() {}
 }
