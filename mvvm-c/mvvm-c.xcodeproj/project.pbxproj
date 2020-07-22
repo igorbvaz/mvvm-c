@@ -168,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				780DC830240F37BB0035F028 /* Extensions */,
-				780DC82F240F37B00035F028 /* Base */,
+				780DC82F240F37B00035F028 /* BaseArchitecture */,
 				78160B15240F35FC000537A7 /* AppDelegate.swift */,
 				780DC843240F41B70035F028 /* AppCoordinator.swift */,
 				78160B17240F35FC000537A7 /* SceneDelegate.swift */,
@@ -228,7 +228,7 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		780DC82F240F37B00035F028 /* Base */ = {
+		780DC82F240F37B00035F028 /* BaseArchitecture */ = {
 			isa = PBXGroup;
 			children = (
 				780DC837240F398D0035F028 /* Service.swift */,
@@ -238,7 +238,7 @@
 				780DC84E240F48AE0035F028 /* NavigationController.swift */,
 				78DF095B2411CD1100F1A323 /* SectionViewModel.swift */,
 			);
-			path = Base;
+			path = BaseArchitecture;
 			sourceTree = "<group>";
 		};
 		780DC830240F37BB0035F028 /* Extensions */ = {
@@ -276,10 +276,10 @@
 		78160B14240F35FC000537A7 /* mvvm-c */ = {
 			isa = PBXGroup;
 			children = (
+				780DC823240F36F20035F028 /* Common */,
 				78DF09502411C00F00F1A323 /* Features */,
 				780DC822240F36E80035F028 /* Model */,
 				780DC827240F37530035F028 /* View */,
-				780DC823240F36F20035F028 /* Common */,
 			);
 			path = "mvvm-c";
 			sourceTree = "<group>";
