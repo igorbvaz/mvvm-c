@@ -25,184 +25,124 @@ class CharactersViewModelSpec: QuickSpec {
             var scheduler: TestScheduler!
             var disposeBag: DisposeBag!
 
+            var showCharactersLoadingStateObserver: TestableObserver<Bool>!
+            var errorObserver: TestableObserver<String>!
+            var dataSourceObserver: TestableObserver<[SectionViewModel<CharacterItemViewModel>]>!
+
             beforeEach {
-                coordinator = CharactersCoordinatorSpy(navigationController: NavigationController())
+                coordinator = CharactersCoordinatorSpy()
                 service = CharactersServiceMock()
                 viewModel = CharactersViewModel(coordinator: coordinator, service: service)
                 scheduler = TestScheduler(initialClock: 0)
                 disposeBag = DisposeBag()
+
+                showCharactersLoadingStateObserver = scheduler.createObserver(Bool.self)
+                errorObserver = scheduler.createObserver(String.self)
+                dataSourceObserver = scheduler.createObserver([SectionViewModel<CharacterItemViewModel>].self)
+
+                viewModel.outputs.showCharactersLoadingStateDriver
+                    .drive(showCharactersLoadingStateObserver)
+                    .disposed(by: disposeBag)
+
+                viewModel.outputs.errorDriver
+                    .drive(errorObserver)
+                    .disposed(by: disposeBag)
+
+                viewModel.outputs.dataSource
+                    .drive(dataSourceObserver)
+                    .disposed(by: disposeBag)
             }
 
             context("when viewDidLoad") {
                 beforeEach {
-                    scheduler.createColdObservable([.next(10, ())]).bind(to: viewModel.inputs.didLoad).disposed(by: disposeBag)
-                }
+                    scheduler.createColdObservable([.next(10, ())])
+                        .bind(to: viewModel.inputs.didLoad)
+                        .disposed(by: disposeBag)
 
-                it("should showCharactersLoadingState") {
-                    let observer = scheduler.createObserver(Bool.self)
-                    viewModel.outputs.showCharactersLoadingStateDriver.drive(observer).disposed(by: disposeBag)
                     scheduler.start()
-                    expect(observer.events.first?.value.element).to(beTrue())
                 }
 
-                it("should call service's getCharacters") {
-                    scheduler.start()
-                    expect(service.getCharactersCalled).to(beTrue())
+                it("should show loading state") {
+                    expect(showCharactersLoadingStateObserver.events).to(containElementSatisfying({ item -> Bool in
+                        return item.value.element == true && item.time == 10
+                    }))
                 }
 
-                context("when getCharacters succeeds") {
+                context("and service's getCharacters returns success") {
                     beforeEach {
                         service.resultType = .success
-                    }
-
-                    it("should not showCharactersLoadingState") {
-//                        let observer = scheduler.createObserver(Bool.self)
-//                        viewModel.outputs.showCharactersLoadingStateDriver.drive(observer).disposed(by: disposeBag)
-//                        scheduler.start()
-//                        expect(observer.events).toEventually(containElementSatisfying({ item -> Bool in
-//                            print("the item \(item)")
-//                            return item.value.element == true
-//                        }))
-                    }
-
-                    it("should set the dataSource") {
-                        let observer = scheduler.createObserver([SectionViewModel<CharacterItemViewModel>].self)
-                        viewModel.outputs.dataSource.drive(observer).disposed(by: disposeBag)
                         scheduler.start()
-                        expect(observer.events).to(containElementSatisfying({ (item) -> Bool in
+                    }
 
-                            return item.value.element?.first?.items.first?.character.id == CharactersMock.character.id
+                    it("should output dataSource") {
+                        expect(dataSourceObserver.events).to(containElementSatisfying({ item -> Bool in
+                            return item.value.element?.first?.items.count == CharactersMock.twoCharactersResponse.data.results.count && item.time == 10
                         }))
                     }
 
-                    context("when there are no results") {
-                        beforeEach {
-                            service.getCharactersResultValue = CharactersMock.zeroCharactersResponse
-                        }
-
-                        it("should showEmptyState") {
-                            let observer = scheduler.createObserver(Bool.self)
-                            viewModel.outputs.showCharactersEmptyStateDriver.drive(observer).disposed(by: disposeBag)
-                            scheduler.start()
-                            expect(observer.events).to(containElementSatisfying({ (item) -> Bool in
-                                return item.value.element == true
-                            }))
-                        }
-
+                    it("should show loading state") {
+                        expect(showCharactersLoadingStateObserver.events).to(containElementSatisfying({ item -> Bool in
+                            return item.value.element == false && item.time == 10
+                        }))
                     }
 
-                    context("when there are more than 1 result") {
-                        beforeEach {
-                            service.getCharactersResultValue = CharactersMock.twoCharactersResponse
-                        }
-                        it("should not showEmptyState") {
-                            let observer = scheduler.createObserver(Bool.self)
-                            viewModel.outputs.showCharactersEmptyStateDriver.drive(observer).disposed(by: disposeBag)
-                            scheduler.start()
-                            expect(observer.events).to(containElementSatisfying({ (item) -> Bool in
-                                return item.value.element == false
-                            }))
-                        }
-                    }
                 }
 
-                context("when getCharacters faills") {
+                context("and service's getCharacters returns failure") {
                     beforeEach {
                         service.resultType = .failure
+                        scheduler.start()
                     }
 
-                    it("should not showCharactersLoadingState") {
-                        let observer = scheduler.createObserver(Bool.self)
-                        viewModel.outputs.showCharactersLoadingStateDriver.drive(observer).disposed(by: disposeBag)
-                        scheduler.start()
-                        expect(observer.events).to(containElementSatisfying({ item -> Bool in
-                            return item.value.element == true
+                    it("should show loading state") {
+                        expect(showCharactersLoadingStateObserver.events).to(containElementSatisfying({ item -> Bool in
+                            return item.value.element == false && item.time == 10
                         }))
                     }
+
+                    it("should output error") {
+                        expect(errorObserver.events).to(containElementSatisfying({ item -> Bool in
+                            return item.value.element == "" && item.time == 10
+                        }))
+                    }
+
                 }
             }
 
             context("when loadNextPage") {
                 beforeEach {
-                    scheduler.createColdObservable([.next(10, ())]).bind(to: viewModel.inputs.didLoad).disposed(by: disposeBag)
-                    scheduler.createColdObservable([.next(20, ())]).bind(to: viewModel.inputs.loadNextPage).disposed(by: disposeBag)
+                    scheduler.createColdObservable([.next(10, ())])
+                        .bind(to: viewModel.inputs.didLoad)
+                        .disposed(by: disposeBag)
+
+                    scheduler.createColdObservable([.next(20, ())])
+                        .bind(to: viewModel.inputs.loadNextPage)
+                        .disposed(by: disposeBag)
+
+                    scheduler.start()
                 }
 
-                it("should showCharactersLoadingState") {
-                    let observer = scheduler.createObserver(Bool.self)
-                    viewModel.outputs.showCharactersLoadingStateDriver.drive(observer).disposed(by: disposeBag)
-                    scheduler.start()
-                    expect(observer.events).to(containElementSatisfying({ item -> Bool in
-                        return item.value.element == true
+                it("should show loading state") {
+                    expect(showCharactersLoadingStateObserver.events).to(containElementSatisfying({ item -> Bool in
+                        return item.value.element == true && item.time == 20
                     }))
                 }
-
-                it("should call service's getCharacters") {
-                    scheduler.start()
-                    expect(service.getCharactersCalled).to(beTrue())
-                }
-
-                context("when getCharacters succeeds") {
-                    beforeEach {
-                        service.resultType = .success
-                    }
-
-                    it("should set the dataSource") {
-//                        let observer = scheduler.createObserver([SectionViewModel<CharacterItemViewModel>].self)
-//                        viewModel.outputs.dataSource.drive(observer).disposed(by: disposeBag)
-//                        scheduler.start()
-//                        expect(observer.events).to(containElementSatisfying({ (item) -> Bool in
-//                            return item.value.element?.first?.items.first?.character.id == CharactersMock.character.id && item.value.element?.first?.items.count == CharactersMock.charactersResponse.data.results.count
-//                        }))
-                    }
-
-                    context("when there are no results") {
-                        beforeEach {
-                            service.getCharactersResultValue = CharactersMock.zeroCharactersResponse
-                        }
-
-                        it("should not showEmptyState") {
-                            let observer = scheduler.createObserver(Bool.self)
-                            viewModel.showCharactersEmptyStateDriver.drive(observer).disposed(by: disposeBag)
-                            scheduler.start()
-                            expect(observer.events).to(containElementSatisfying({ (item) -> Bool in
-                                return item.value.element == true
-                            }))
-                        }
-
-                    }
-
-                    context("when there are more than 1 result") {
-                        beforeEach {
-                            service.getCharactersResultValue = CharactersMock.twoCharactersResponse
-                        }
-                        it("should not showEmptyState") {
-                            let observer = scheduler.createObserver(Bool.self)
-                            viewModel.outputs.showCharactersEmptyStateDriver.drive(observer).disposed(by: disposeBag)
-                            scheduler.start()
-                            expect(observer.events).to(containElementSatisfying({ (item) -> Bool in
-                                return item.value.element == false
-                            }))
-                        }
-                    }
-                }
-
-                context("when getCharacters faills") {
-                    // TODO:
-                }
-
             }
 
-            context("when characterSelected") {
+            context("when user selects a character") {
                 beforeEach {
-                    scheduler.createColdObservable([.next(10, CharactersMock.character)]).bind(to: viewModel.inputs.characterSelected).disposed(by: disposeBag)
+                    scheduler.createColdObservable([.next(10, CharactersMock.character)])
+                        .bind(to: viewModel.inputs.characterSelected)
+                        .disposed(by: disposeBag)
+
+                    scheduler.start()
                 }
 
                 it("should go to CharactersDetails") {
-                    scheduler.start()
                     expect(coordinator.goToDetails).to(beTrue())
                 }
             }
+
         }
     }
 }

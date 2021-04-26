@@ -15,7 +15,7 @@ class CharactersMock {
     }
 
     static var character: Character {
-        return Character(id: 1, name: "Spiderman")
+        return Character(name: "Spiderman")
     }
 
     static var zeroCharactersResponse: CharactersResponse {

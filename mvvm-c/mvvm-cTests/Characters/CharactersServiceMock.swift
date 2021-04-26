@@ -13,20 +13,16 @@ import RxSwift
 class CharactersServiceMock: CharactersServiceProtocol {
 
     var resultType: ResultType = .success
-
-    var getCharactersCalled = false
-    var getCharactersResultValue: CharactersResponse! = CharactersMock.twoCharactersResponse
+    var returnValue: Any!
 
     func getCharacters(offset: Int) -> Observable<Result<CharactersResponse>> {
-        getCharactersCalled = true
         switch resultType {
         case .success:
-            return Observable.just(Result.success(value: getCharactersResultValue))
+            return Observable.just(Result.success(value: returnValue as? CharactersResponse ?? CharactersMock.twoCharactersResponse))
         case .failure:
             return Observable.just(Result.failure(error: CharactersMock.error))
         }
 
     }
-
 
 }

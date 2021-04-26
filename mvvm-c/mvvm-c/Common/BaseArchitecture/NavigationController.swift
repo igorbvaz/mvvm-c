@@ -10,9 +10,9 @@ import UIKit
 
 class NavigationController: UINavigationController {
 
-    init() {
+    init(transparent: Bool = true) {
         super.init(nibName: nil, bundle: nil)
-        navigationBar.transparent = true
+        navigationBar.transparent = transparent
     }
 
     required init?(coder aDecoder: NSCoder) {

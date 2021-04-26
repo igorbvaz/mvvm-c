@@ -13,12 +13,8 @@ class mvvm_cUITests: XCTestCase {
     let app = XCUIApplication()
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        app.launch()
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDown() {
@@ -26,11 +22,20 @@ class mvvm_cUITests: XCTestCase {
     }
 
     func test_CheckCharacterDetails() {
-        app.launch()
+        let cell = app.tables.element.cells.element(boundBy: 2)
+        let tappedCharacterName = cell.staticTexts.element.label
+        cell.tap()
+        if app.staticTexts[tappedCharacterName].waitForExistence(timeout: 2) {
+            app.navigationBars["mvvm_c.CharacterDetailsView"].buttons.firstMatch.tap()
+        }
+    }
 
-        app.tables.staticTexts["Aaron Stack"].tap()
-        XCTAssertTrue(app.staticTexts["Aaron Stack"].exists)
-        app.navigationBars["mvvm_c.CharacterDetailsView"].buttons["Back"].tap()
-
+    func test_pagination() {
+        let numberOfCells = app.tables.element.cells.count
+        app.swipeUp()
+        sleep(5)
+        wait(for: [XCTestExpectation], timeout: <#T##TimeInterval#>)
+        let newNumberOfCells = app.tables.element.cells.count
+        XCTAssertGreaterThan(newNumberOfCells, numberOfCells)
     }
 }

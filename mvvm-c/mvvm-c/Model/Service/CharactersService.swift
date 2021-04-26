@@ -12,8 +12,9 @@ import RxSwift
 protocol CharactersServiceProtocol {
     func getCharacters(offset: Int) -> Observable<Result<CharactersResponse>>
 }
+
 class CharactersService: Service, CharactersServiceProtocol {
     func getCharacters(offset: Int) -> Observable<Result<CharactersResponse>> {
-        return request(url: Endpoints.Characters.getCharacters(offset: offset).url, method: .get, parameters: nil)
+        return request(endpoint: Endpoints.Characters.getCharacters(offset: offset), method: .get)
     }
 }

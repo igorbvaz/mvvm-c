@@ -9,21 +9,12 @@
 import UIKit
 import SnapKit
 
-class CharactersView: UIView {
+class CharactersView: IVView {
 
     var tableView = UITableView()
 
-    init() {
-        super.init(frame: .zero)
-        setup()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    private func setup() {
-        setupAppearance()
+    override func setup() {
+        super.setup()
         setupTableView()
     }
 
@@ -31,19 +22,13 @@ class CharactersView: UIView {
 
 extension CharactersView {
 
-    private func setupAppearance() {
-        backgroundColor = R.color.background()
-    }
-
     private func setupTableView() {
         addSubview(tableView)
 
         tableView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0).priority(.high)
+            make.top.equalToSuperview().priority(.high)
             make.left.right.bottom.equalToSuperview()
         }
 
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.automaticallyAdjustsScrollIndicatorInsets = false
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-class CharactersViewController: ViewController<CharactersView> {
+class CharactersViewController: IVViewController<CharactersView> {
 
     var viewModel: CharactersViewModel!
 
@@ -32,21 +32,42 @@ class CharactersViewController: ViewController<CharactersView> {
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         setupTableView()
-        setupOutputs()
-        setupInputs()
+        super.viewDidLoad()
         viewModel.inputs.didLoad.onNext(())
     }
+    
+    override func setupOutputs() {
+        super.setupOutputs()
+        viewModel.outputs.dataSource.drive(mainView.tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        viewModel.outputs.showCharactersEmptyStateDriver.drive(onNext: { [weak self] show in
+            if show {
+                self?.mainView.tableView.tableFooterView = EmptyStateView(frame: .zero)
+            } else {
+                self?.mainView.tableView.tableFooterView = UIView()
+            }
+        }).disposed(by: disposeBag)
 
+        viewModel.outputs.showCharactersLoadingStateDriver.drive(onNext: { [weak self] show in
+            if show {
+                self?.mainView.tableView.tableFooterView = LoadingStateView(size: .init(width: 70, height: 70),text: "Carregando...")
+            } else {
+                self?.mainView.tableView.tableFooterView = UIView()
+            }
+        }).disposed(by: disposeBag)
+
+    }
+
+    override func setupInputs() {
+        super.setupInputs()
+        mainView.tableView.rx.modelSelected(CharacterItemViewModel.self).map { $0.character }.bind(to: viewModel.inputs.characterSelected).disposed(by: disposeBag)
     }
 
 }
 
 extension CharactersViewController {
+    
     private func setupTableView() {
         let identifier = String(describing: CharacterCell.self)
         mainView.tableView.register(CharacterCell.self, forCellReuseIdentifier: identifier)
@@ -69,31 +90,5 @@ extension CharactersViewController {
 
     }
 
-    private func setupOutputs() {
-        viewModel.outputs.dataSource.drive(mainView.tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
-
-        viewModel.outputs.showCharactersEmptyStateDriver.drive(onNext: { [weak self] show in
-            if show {
-                self?.mainView.tableView.tableFooterView = EmptyStateView(frame: .zero)
-            } else {
-                self?.mainView.tableView.tableFooterView = UIView()
-            }
-        }).disposed(by: disposeBag)
-
-        viewModel.outputs.showCharactersLoadingStateDriver.drive(onNext: { [weak self] show in
-            if show {
-                self?.mainView.tableView.tableFooterView = LoadingStateView(size: .init(width: 70, height: 70),text: "Carregando...")
-            } else {
-                self?.mainView.tableView.tableFooterView = UIView()
-            }
-        }).disposed(by: disposeBag)
-
-        viewModel.outputs.errorDriver.drive(onNext: { [weak self] error in
-            self?.showAlert(text: error)
-        }).disposed(by: disposeBag)
-    }
-
-    private func setupInputs() {
-        mainView.tableView.rx.modelSelected(CharacterItemViewModel.self).map { $0.character }.bind(to: viewModel.inputs.characterSelected).disposed(by: disposeBag)
-    }
+    
 }

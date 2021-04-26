@@ -8,16 +8,19 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
-    var navigationController: NavigationController
+class AppCoordinator: NSObject, Coordinator {
+//    var childCoordinators: [Coordinator]
+    var navigationController: UINavigationController!
 
-    required init(navigationController: NavigationController) {
-        self.navigationController = navigationController
-    }
+//    required init(navigationController: NavigationController) {
+//        self.childCoordinators = []
+//        self.navigationController = navigationController
+//    }
 
-    func start() {
-        let charactersCoordinator = CharactersCoordinator(navigationController: navigationController)
-        charactersCoordinator.start()
+    func start(presentationStyle: PresentationStyle) {
+//        let charactersCoordinator = CharactersCoordinator()
+//        childCoordinators.append(charactersCoordinator)
+        CharactersCoordinator().start(presentationStyle: presentationStyle)
     }
 
     func route(path: CoordinatorPath) {}

@@ -11,19 +11,13 @@ import UIKit
 enum CharactersPath: CoordinatorPath {
     case details(character: Character)
 }
-protocol CharactersCoordinatorProtocol: Coordinator {}
 
-class CharactersCoordinator: CharactersCoordinatorProtocol {
+class CharactersCoordinator: Coordinator {
 
-    var navigationController: NavigationController
-
-    required init(navigationController: NavigationController) {
-        self.navigationController = navigationController
-    }
-
-    func start() {
+    func start(presentationStyle: PresentationStyle) {
         let charactersViewController = CharactersViewController(viewModel: CharactersViewModel(coordinator: self))
-        navigationController.pushViewController(charactersViewController, animated: false)
+        UINavigationController().pushViewController(charactersViewController, animated: true)
+        show(viewController: charactersViewController, presentationStyle: presentationStyle)
     }
 
     func route(path: CoordinatorPath) {
@@ -31,7 +25,8 @@ class CharactersCoordinator: CharactersCoordinatorProtocol {
         switch path {
         case .details(let character):
             let viewController = CharacterDetailsViewController(viewModel: CharacterDetailsViewModel(coordinator: self, character: character))
-            navigationController.pushViewController(viewController, animated: true)
+            show(viewController: viewController, presentationStyle: .modal)
         }
     }
+    
 }
